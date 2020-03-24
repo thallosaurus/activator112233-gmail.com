@@ -31,7 +31,7 @@ echo "";
 <body>
     <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper blue lighten-4">
           <a href="#!" class="brand-logo">(α)</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
@@ -43,7 +43,7 @@ echo "";
         </div>
       </nav>
     
-      <ul class="sidenav blue lighten-4" id="mobile-demo">
+      <ul class="sidenav" id="mobile-demo">
         <nav>
             <div class="nav-wrapper">
                 <form>
