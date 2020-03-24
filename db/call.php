@@ -3,6 +3,7 @@ header('Content-Type: application/json');
 require("../vendor/autoload.php");
 require("./db_test.php");
 require("./lib/answer.php");
+require("./lib/heroku_config.php");
 
 function run()
 {

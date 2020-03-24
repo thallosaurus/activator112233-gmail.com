@@ -2,17 +2,15 @@
 
 require("queries.php");
 
-$GLOBALS["iwf"]["CNF"]["_DBLINK"] = null;
-
 function connectDB($w)
 {
 	//$usr = ($w ? $GLOBALS["iwf"]["USR"]["DB_WRITE_name"] : $GLOBALS["iwf"]["USR"]["DB_READ_name"]);
 	//$pw  = ($w ? $GLOBALS["iwf"]["USR"]["DB_WRITE_pw"] :   $GLOBALS["iwf"]["USR"]["DB_READ_pw"]);
 
-	$usr = "urlaub";
-	$pw = "urlaub";
+	$usr = $GLOBALS["lm"]["DB"]["DB_USERNAME"];
+	$pw = $GLOBALS["lm"]["DB"]["DB_PASSWORD"];
 
-	$GLOBALS["lm"]["CNF"]["_DBLINK"] = new PDO("mysql:host=localhost;dbname=liesmich;charset=utf8", $usr, $pw);
+	$GLOBALS["lm"]["CNF"]["_DBLINK"] = new PDO("mysql:host=".$GLOBALS["lm"]["DB"]["DB_HOST"].";dbname=".$GLOBALS["lm"]["DB"]["DB_TABLE"].";charset=utf8", $usr, $pw);
 	
 	//Prüfen auf Erfolg, sobald ERROROBJECT implementiert
 	if ( $GLOBALS["lm"]["CNF"]["_DBLINK"] )
