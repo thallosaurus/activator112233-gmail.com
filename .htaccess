@@ -1,0 +1,3 @@
+RewriteCond %{DOCUMENT_ROOT}/v/$1 !-f
+
+RewriteRule ^/?([a-z]+)/(.*)$ /index.html?id=$1
