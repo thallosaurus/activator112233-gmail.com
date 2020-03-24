@@ -6,7 +6,7 @@ echo "";
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="manifest" href="manifest.webmanifest">
     <script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.6/pwacompat.min.js",
     integrity="sha384-GOaSLecPIMCJksN83HLuYf9FToOiQ2Df0+0ntv7ey8zjUHESXhthwvq9hXAZTifA",
@@ -29,6 +29,7 @@ echo "";
     <title>(α)</title>
 </head>
 <body>
+    <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
           <a href="#!" class="brand-logo">(α)</a>
@@ -42,7 +43,7 @@ echo "";
         </div>
       </nav>
     
-      <ul class="sidenav" id="mobile-demo">
+      <ul class="sidenav blue lighten-4" id="mobile-demo">
         <nav>
             <div class="nav-wrapper">
                 <form>
@@ -56,6 +57,7 @@ echo "";
         </nav>
         <li><a href="#">Search results go here</a></li>
       </ul>
+    </div>
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
     <!--<input type="button" id="add_link" onclick="add_link()" value="Add Link"> -->
     <div id="debug"></div>
