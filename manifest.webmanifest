@@ -1,18 +1,18 @@
 {
 "dir": "ltr",
 "lang": "de-DE",
-"name": "PWA",
-"short_name": "PWA",
+"name": "Liesmich (α)",
+"short_name": "(α)",
 "description": "Eine Beispielanwendung als Progressive Web App",
 "icons": [{
-        "src": "img/icon256.png",
+        "src": "img/icon512.png",
         "type": "image/png",
-        "sizes": "256x256"
+        "sizes": "512x512"
     }],
 "background_color": "white",
 "theme_color": "#f4f4f4",
-"start_url": "app.domainxyz.de",
-"scope": "app.domainxyz.de",
+"start_url": "https://peaceful-brook-41114.herokuapp.com/",
+"scope": "https://peaceful-brook-41114.herokuapp.com",
 "display": "standalone",
 "orientation": "portrait-primary"
 }
