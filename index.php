@@ -1,6 +1,12 @@
 <?php
 require("./vendor/autoload.php");
+require("./db/lib/config.php");
 echo "";
+
+function color()
+{
+    echo $GLOBALS["lm"]["CNF"]["COLOR"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -28,10 +34,10 @@ echo "";
     <script src="js/main.js"></script>
     <title>(α)</title>
 </head>
-<body>
+<body class="<?php color() ?> lighten-5">
     <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper blue lighten-4">
+        <div class="nav-wrapper indigo darken-4">
           <a href="#!" class="brand-logo">(α)</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
@@ -45,10 +51,10 @@ echo "";
     
       <ul class="sidenav" id="mobile-demo">
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper <?php color() ?> darken-4">
                 <form>
                     <div class="input-field">
-                        <input id="search" type="search" required>
+                        <input id="search" type="search">
                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                         <i class="material-icons">close</i>
                     </div>
@@ -69,7 +75,7 @@ echo "";
     <!-- Activate GPS Card -->
     <div class="row">
         <div class="col s12 m6" id="activate_gps">
-          <div class="card blue-grey darken-1">
+          <div class="card <?php color() ?> darken-1">
             <div class="card-content white-text">
               <span class="card-title">Please activate location</span>
               <p>To use this app you need to enable locationservices. This app sends your location to the backend server and returns posts around you in a radius of 25km. If you post something, your location will be saved with what you posted (Without IP, for now)!</p>
