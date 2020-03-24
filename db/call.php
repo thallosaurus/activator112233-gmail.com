@@ -2,11 +2,12 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
+require("./lib/config.php");
+
 header('Content-Type: application/json');
 require("../vendor/autoload.php");
 require("./db_test.php");
 require("./lib/answer.php");
-require("./lib/config.php");
 
 function run()
 {
