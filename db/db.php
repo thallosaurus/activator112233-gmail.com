@@ -6,7 +6,6 @@ function connectDB($w)
 {
 	//$usr = ($w ? $GLOBALS["iwf"]["USR"]["DB_WRITE_name"] : $GLOBALS["iwf"]["USR"]["DB_READ_name"]);
 	//$pw  = ($w ? $GLOBALS["iwf"]["USR"]["DB_WRITE_pw"] :   $GLOBALS["iwf"]["USR"]["DB_READ_pw"]);
-	print_r( $GLOBALS);
 
 	$usr = $GLOBALS["lm"]["DB"]["DB_USERNAME"];
 	$pw = $GLOBALS["lm"]["DB"]["DB_PASSWORD"];
