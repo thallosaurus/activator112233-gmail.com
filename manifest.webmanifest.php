@@ -9,11 +9,11 @@
 {
 "dir": "ltr",
 "lang": "de-DE",
-"name": "Liesmich (α)",
-"short_name": "(α)",
+"name": "Liesmich (α) <?php print get_dev() ?>",
+"short_name": "(α) <?php print get_dev() ?>",
 "description": "Hyperlokales Soziales Netzwerk",
 "icons": [{
-        "src": "img/icon512<?php print get_dev() ?>.png",
+        "src": "img/icon<?php print get_dev() ?>512.png",
         "type": "image/png",
         "sizes": "512x512"
     }],
