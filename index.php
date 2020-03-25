@@ -70,7 +70,7 @@ function color()
     <div class="container">
         <div id="posts"></div>
     </div>
-    <div id="x">Log:</div>
+    <div style="display: none" id="x">Log:</div>
 
     <!-- Activate GPS Card -->
     <div class="row">
