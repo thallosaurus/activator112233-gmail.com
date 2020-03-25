@@ -47,7 +47,7 @@ function generate_pins()
     crossorigin="anonymous"></script>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="img/icon512.png">
+    <link rel="apple-touch-icon" href="img/icon<?php print get_dev()?>512.png">
 
     <link rel="stylesheet" href="css/main.css">
 

@@ -1,9 +1,5 @@
 <?php
     require("./db/lib/config.php");
-    function get_dev()
-    {
-        return is_dev() ? "dev" : "";
-    }
 ?>
 
 {

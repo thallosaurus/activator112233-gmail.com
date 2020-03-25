@@ -19,4 +19,9 @@ function is_dev()
 {
     return $GLOBALS["lm"]["CNF"]["DEVMODE"] == "dev";
 }
+
+function get_dev()
+{
+    return is_dev() ? "dev" : "";
+}
 ?>
