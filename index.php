@@ -93,7 +93,7 @@ function generate_pins()
             </div>
         </nav>-->
         
-        <li><a href="index.php?cat=-1">All Posts</a></li>
+        <li><a href="index.php?cat=-1"><i class="material-icons">all_inclusive</i>All Posts</a></li>
         <?php
             echo generate_pins();
         ?>
