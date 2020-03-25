@@ -1,3 +1,4 @@
-RewriteCond %{DOCUMENT_ROOT}/v/$1 !-f
+RewriteEngine On
 
-RewriteRule ^/?([a-z]+)/(.*)$ /index.html?id=$1
+RewriteCond %{DOCUMENT_ROOT}/v/$1 !-f
+RewriteRule ^/?([a-z]+)/(.*)$ /view.php?id=$1
