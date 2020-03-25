@@ -28,3 +28,6 @@ See [Materialize](https://materializecss.com/color.html) for more information on
 To run it locally, use
 
 ```heroku local web```
+
+if you use windows, use
+```heroku local dev```
