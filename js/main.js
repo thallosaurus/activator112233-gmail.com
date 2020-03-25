@@ -399,7 +399,7 @@ function initMaterialize()
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems, {
             //direction: "left"
-            toolbarEnabled: true
+            toolbarEnabled: !FAB_USE_SUBBUTTONS
         });
 
         var elems = document.querySelectorAll('.modal');

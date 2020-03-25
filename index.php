@@ -125,18 +125,52 @@ function generate_pins()
       </div>-->
 
     <!-- FAB -->
-    <div class="fixed-action-btn toolbar">
+    <div class="fixed-action-btn <?php fab_use_subbuttons() ? "" : "toolbar" ?>">
         <a class="btn-floating btn-large red">
           <i class="large material-icons">add</i>
         </a>
         <ul>
-          <!--<li><a class="btn-floating red modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
-          <li><a class="btn-floating yellow darken-1 modal-trigger disabled" data-target="add_photo"><i class="material-icons">insert_photo</i></a></li>
-          <li><a class="btn-floating green modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>-->
-          <li><a class="modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
-          <li><a class="modal-trigger disabled" data-target="add_photo"><i class="material-icons">insert_photo</i></a></li>
-          <li><a class="modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>
-        
+            <!--<li><a class="btn-floating red modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
+            <li><a class="btn-floating yellow darken-1 modal-trigger disabled" data-target="add_photo"><i class="material-icons">insert_photo</i></a></li>
+            <li><a class="btn-floating green modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>-->
+            <?php
+            if (fab_use_subbuttons())
+            {
+                print '<li>
+                    <a class="btn-floating red modal-trigger" data-target="add_text">
+                        <i class="material-icons">text_fields</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating yellow darken-1 modal-trigger disabled" data-target="add_photo">
+                        <i class="material-icons">insert_photo</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating green modal-trigger" data-target="add_link">
+                        <i class="material-icons">link</i>
+                    </a>
+                </li>';
+            }
+            else
+            {
+                print '<li>
+                    <a class="modal-trigger" data-target="add_text">
+                        <i class="material-icons">text_fields</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="modal-trigger disabled" data-target="add_photo">
+                        <i class="material-icons">insert_photo</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="modal-trigger" data-target="add_link">
+                        <i class="material-icons">link</i>
+                    </a>
+                </li>';
+            }
+            ?>
         </ul>
       </div>
 
@@ -235,4 +269,7 @@ function generate_pins()
         </div>
     </div>
 </body>
+<script>
+    const FAB_USE_SUBBUTTONS = <?php print (fab_use_subbuttons() ? "true" : "false")?>
+</script>
 </html>
