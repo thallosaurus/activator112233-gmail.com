@@ -10,6 +10,7 @@ const TEXT = 1;
 let currLat, currLon, gpsId;
 
 let page = 0;
+let category = -1;
 
 let threadId;
 
@@ -36,12 +37,38 @@ class TableRow {
         this.data = {};
         this.data.title = decodeURIComponent(dbData.title);
         this.type = parseInt(dbData.type);
-        this.data.content = "#" + categories.strings[parseInt(dbData.category)]; //categories.strings[d.id]
+        this.data.category = "#" + categories.strings[parseInt(dbData.category)]; //categories.strings[d.id]
         this.data.distance = Math.round(dbData.distance) + " km";
+        this.data.age = this.getAge(dbData.age);
         this.id = dbData.id;
         this.iconstring = ["link", "text_fields", "insert_photo"][this.type];
         this.setBackground(0);
         console.log(this);
+    }
+
+    //pass in milliseconds and get back textual representation
+    //Age: 3 min old
+    //Age: 5 hours old
+    //etc...
+    getAge(millisec) {
+
+        var seconds = (millisec / 1000).toFixed(0);
+
+        var minutes = (millisec / (1000 * 60)).toFixed(0);
+
+        var hours = (millisec / (1000 * 60 * 60)).toFixed(0);
+
+        var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(0);
+
+        if (seconds < 60) {
+            return seconds + " s";
+        } else if (minutes < 60) {
+            return minutes + " m";
+        } else if (hours < 24) {
+            return hours + " h";
+        } else {
+            return days + " d"
+        }
     }
 
     setBackground(i)
@@ -53,6 +80,7 @@ class TableRow {
     {
         let row = document.createElement("tr");
         row.append(this.getIcon());
+        //row.className = "highlight";
         for (let val in this.data)
         {
             let td = document.createElement("td");
@@ -129,6 +157,7 @@ function update()
         "action=update",
         "lat=" + currLat,
         "lon=" + currLon,
+        "cat=" + category,
         "page=" + page
     ],
     insertDataIntoTable);
@@ -153,7 +182,7 @@ function buildTable(data)
     table.className = "highlight";
 
     //add Headers
-    let header_text = ["Type", "Title", "Category", "Distance"];
+    let header_text = ["Type", "Title", "Category", "Distance", "Age"];
     let header = document.createElement("tr");
     for (let i = 0; i < header_text.length; i++)
     {
@@ -182,7 +211,7 @@ function onMainClickUI(e)
         "action=open",
         "id=" + dataset.id
     ], function(data) {
-        location.href = data.content.link;
+        location.href = "view.php?id=" + data.content.link;
     });
 }
 
@@ -311,12 +340,15 @@ window.onload = function()
 {
     let url = new this.URLSearchParams(location.search);
     threadId = url.get("id") != null ? url.get("id") : -1;
+    category = url.get("cat") != null ? url.get("cat") : -1;
     
     x = document.getElementById("x");
     //initOverscrollLoad();
     M.AutoInit();
     initMaterialize();
     //
+
+    enable_location();
 }
 
 function initOverscrollLoad()
@@ -334,7 +366,7 @@ function initOverscrollLoad()
 
 function enable_location()
 {
-    hideGPSCard();
+    //hideGPSCard();
     geoId = navigator.geolocation.watchPosition(this.retrieve_posts_in_location, this.showError, geoOptions);
 }
 
@@ -362,7 +394,8 @@ function initMaterialize()
     //document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems, {
-            direction: "left"
+            //direction: "left"
+            toolbarEnabled: true
         });
 
         var elems = document.querySelectorAll('.modal');

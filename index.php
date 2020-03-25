@@ -1,11 +1,39 @@
 <?php
 require("./vendor/autoload.php");
 require("./db/lib/config.php");
+require("./db/db_test.php");
 echo "";
 
 function color()
 {
     echo $GLOBALS["lm"]["CNF"]["COLOR"];
+}
+
+function get_pinned_cats()
+{
+    return getenv("PINNED_CATEGORIES");
+}
+
+function generate_pins()
+{
+    //<li><a href="index.php?cat=7">#tests category</a></li>
+    $str = "";
+    $a = get_pinned_cats();
+    debugWrite($a);
+
+
+    $cats = explode(",",get_pinned_cats());
+    for ($i = 0; $i < sizeof($cats); $i++)
+    {
+        $c = get_category_by_id($cats[$i]);
+
+        /*foreach($c as $t)
+        {
+            debugWrite($t);
+        }*/
+        $str = $str . "<li ><a href='index.php?cat=" . $c[0]["id"] . "'><i class='material-icons'>" . $c[0]["icon"] . "</i>#" . $c[0]["value"] . " category</a></li>";
+    }
+    return $str;
 }
 ?>
 <!DOCTYPE html>
@@ -35,6 +63,9 @@ function color()
     <title>(α)</title>
 </head>
 <body class="<?php color() ?> lighten-5">
+    <!--<div id="egg">
+        <img id="kitty" src="img/cat.png">
+    </div>-->
     <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper <?php color() ?> darken-4">
@@ -61,7 +92,14 @@ function color()
                 </form>
             </div>
         </nav>-->
-        <li><a href="https://github.com/thallosaurus/liesmich/">GitHub</a></li>
+        
+        <li><a href="index.php?cat=-1">All Posts</a></li>
+        <?php
+            echo generate_pins();
+        ?>
+        <li class="divider"></li>
+        <!-- class='waves-effect waves-light' -->
+        <li><a href="https://github.com/thallosaurus/liesmich/"><i class="material-icons">code</i>GitHub</a></li>
       </ul>
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
     <!--<input type="button" id="add_link" onclick="add_link()" value="Add Link"> -->
@@ -72,7 +110,7 @@ function color()
     <div style="display: none" id="x">Log:</div>
 
     <!-- Activate GPS Card -->
-    <div class="row">
+    <!--<div class="row">
         <div class="col s12 m6" id="activate_gps">
           <div class="card <?php color() ?> darken-1">
             <div class="card-content white-text">
@@ -80,21 +118,25 @@ function color()
               <p>To use this app you need to enable locationservices. This app sends your location to the backend server and returns posts around you in a radius of 25km. If you post something, your location will be saved with what you posted (Without IP, for now)!</p>
             </div>
             <div class="card-action">
-              <a onclick="enable_location()" href="#">Ok, activate!</a>
+              <a onclick="enable_location()">Ok, activate!</a>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
 
     <!-- FAB -->
-    <div class="fixed-action-btn">
+    <div class="fixed-action-btn toolbar">
         <a class="btn-floating btn-large red">
           <i class="large material-icons">add</i>
         </a>
         <ul>
-          <li><a class="btn-floating red modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
+          <!--<li><a class="btn-floating red modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
           <li><a class="btn-floating yellow darken-1 modal-trigger disabled" data-target="add_photo"><i class="material-icons">insert_photo</i></a></li>
-          <li><a class="btn-floating green modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>
+          <li><a class="btn-floating green modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>-->
+          <li><a class="modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
+          <li><a class="modal-trigger disabled" data-target="add_photo"><i class="material-icons">insert_photo</i></a></li>
+          <li><a class="modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>
+        
         </ul>
       </div>
 

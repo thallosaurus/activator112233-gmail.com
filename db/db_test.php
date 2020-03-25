@@ -28,7 +28,6 @@
  ********************************************************************************/
 
 require("db.php");
-require("./lib/categories.php");
 
 define("FIXED_RADIUS", 15);
 define("FIXED_USER_LAT", 12.083598); //Franz-Zebisch-Straße, Weiden i. d. Opf
@@ -42,20 +41,24 @@ define("MAX_ITEMS", 25);
 
 connectDB(false);
 
-function get_in_radius($lat, $lon, $rad, $page)
+function get_in_radius($lat, $lon, $rad, $cat, $page)
 {
     //$start = $page * MAX_ITEMS;
     //$end = $page * MAX_ITEMS + MAX_ITEMS;
     
-    $start = 0;
-    $end = 25;
+    //$start = 0;
+    //$end = 25;
+    $filter = ($cat > 0) ? 1 : NULL;
+    //$cat = ($cat == -1) ? "\"%\"" : $cat;
 
     //print("page: " . $start . PHP_EOL . "end: " . $end);
     $stmt = dbExec("find_in_radius",
         array(
             "u_rad" => $rad,
             "u_lat" => $lat,
-            "u_lon" => $lon
+            "u_lon" => $lon,
+            "ignorewhere" => $filter,
+            "cat" => $cat
         )
     );
 
@@ -68,7 +71,12 @@ function get_in_radius($lat, $lon, $rad, $page)
     $arr = array();
     foreach ($res as $r)
     {
-        $arr[] = array($r["title"], $r["category"], $r["distance"] . "km");
+        $then = strtotime($r["timestamp"]);
+        $now = time();
+
+        $age = ($now - $then) / 1000;
+
+        $arr[] = array($r["title"], $r["category"], $age . " s", $r["distance"] . "km");
     }
 
     return array("posts" => $res, "cat" => get_categories());
@@ -143,6 +151,12 @@ function get_categories()
 {
     $res = dbExec("cat")->fetchAll(PDO::FETCH_ASSOC);
     //return new Categories($res);
+    return $res;
+}
+
+function get_category_by_id($id)
+{
+    $res = dbExec("search_for_cat_by_id", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
     return $res;
 }
 ?>

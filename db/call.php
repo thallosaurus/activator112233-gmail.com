@@ -22,13 +22,14 @@ function run()
     $id = isset($_POST["id"])   ?   trim($_POST["id"])  :   -1;
     $media = isset($_POST["media"]) ?   trim($_POST["media"])   :   null;
     $page = isset($_POST["page"])   ?   trim($_POST["page"])    :   1;
+    $cat = isset($_POST["cat"])   ?   trim($_POST["cat"])    :   -1;
 
-    file_put_contents("php://stderr", "something happened!");
+    //file_put_contents("php://stderr", "something happened!");
 
     switch ($action)
     {
         case "update":
-            return get_in_radius($lat, $lon, $radius, $page);
+            return get_in_radius($lat, $lon, $radius, $cat, $page);
 
         case "post":
             return post_data($title, $content, $type, $media, $category, $lat, $lon);
