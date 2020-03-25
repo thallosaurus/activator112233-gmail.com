@@ -68,7 +68,12 @@ function get_in_radius($lat, $lon, $rad, $page)
     $arr = array();
     foreach ($res as $r)
     {
-        $arr[] = array($r["title"], $r["category"], $r["distance"] . "km");
+        $then = strtotime($r["timestamp"]);
+        $now = time();
+
+        $age = ($now - $then) / 1000;
+
+        $arr[] = array($r["title"], $r["category"], $age . " s", $r["distance"] . "km");
     }
 
     return array("posts" => $res, "cat" => get_categories());

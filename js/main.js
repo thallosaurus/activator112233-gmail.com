@@ -36,12 +36,38 @@ class TableRow {
         this.data = {};
         this.data.title = decodeURIComponent(dbData.title);
         this.type = parseInt(dbData.type);
-        this.data.content = "#" + categories.strings[parseInt(dbData.category)]; //categories.strings[d.id]
+        this.data.category = "#" + categories.strings[parseInt(dbData.category)]; //categories.strings[d.id]
         this.data.distance = Math.round(dbData.distance) + " km";
+        this.data.age = this.getAge(dbData.age);
         this.id = dbData.id;
         this.iconstring = ["link", "text_fields", "insert_photo"][this.type];
         this.setBackground(0);
         console.log(this);
+    }
+
+    //pass in milliseconds and get back textual representation
+    //Age: 3 min old
+    //Age: 5 hours old
+    //etc...
+    getAge(millisec) {
+
+        var seconds = (millisec / 1000).toFixed(0);
+
+        var minutes = (millisec / (1000 * 60)).toFixed(0);
+
+        var hours = (millisec / (1000 * 60 * 60)).toFixed(0);
+
+        var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(0);
+
+        if (seconds < 60) {
+            return seconds + " Sec";
+        } else if (minutes < 60) {
+            return minutes + " Min";
+        } else if (hours < 24) {
+            return hours + " Hrs";
+        } else {
+            return days + " Days"
+        }
     }
 
     setBackground(i)
@@ -153,7 +179,7 @@ function buildTable(data)
     table.className = "highlight";
 
     //add Headers
-    let header_text = ["Type", "Title", "Category", "Distance"];
+    let header_text = ["Type", "Title", "Category", "Distance", "Age"];
     let header = document.createElement("tr");
     for (let i = 0; i < header_text.length; i++)
     {
@@ -182,7 +208,7 @@ function onMainClickUI(e)
         "action=open",
         "id=" + dataset.id
     ], function(data) {
-        location.href = data.content.link;
+        location.href = "view.php?id=" + data.content.link;
     });
 }
 
