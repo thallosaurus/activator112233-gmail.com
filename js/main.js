@@ -187,21 +187,23 @@ function onMainClickUI(e)
 }
 
 function showError(error) {
-    x.innerHTML += "<br>";
+    let str = "";
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML += "User denied the request for Geolocation."
+            str += "User denied the request for Geolocation."
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML += "Location information is unavailable."
+            str += "Location information is unavailable."
             break;
         case error.TIMEOUT:
-            x.innerHTML += "The request to get user location timed out."
+            str += "The request to get user location timed out."
             break;
         case error.UNKNOWN_ERROR:
-            x.innerHTML += "An unknown error occurred."
+            str += "An unknown error occurred."
             break;
     }
+
+    console.log(str);
 }
 
 function add_post(elem)
@@ -346,7 +348,7 @@ function hideGPSCard()
 function saveCategories(data)
 {
     console.log(data);
-    for (let d of data.content)
+    for (let d of data)
     {
         categories.acdata[d.value] = null;
         categories.icon_data[d.value] = d.icon;
