@@ -23,4 +23,7 @@ $GLOBALS["lm"]["QRY"]["search_for_cat_by_id"]
 
 $GLOBALS["lm"]["QRY"]["create_cat"]
     = "INSERT INTO `categories`(`value`, `icon`) VALUES (:name, :icon)";
+
+$GLOBALS["lm"]["QRY"]["get_whole_topic"]
+    = "SELECT `id`, `title`, `content`, `type`, `category` FROM `posts` WHERE `id` = :id";
 ?>

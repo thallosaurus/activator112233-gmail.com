@@ -79,6 +79,7 @@ class TableRow {
     parse()
     {
         let row = document.createElement("tr");
+        row.dataset.href = "view.php?id=" + this.id;
         row.append(this.getIcon());
         //row.className = "highlight";
         for (let val in this.data)
@@ -204,15 +205,18 @@ function buildTable(data)
 
 function onMainClickUI(e)
 {
-    let dataset = e.target.parentElement.dataset;
+    console.log(e);
+    location.href = location.origin + "/" + e.target.parentElement.dataset.href;
+    /*let dataset = e.target.parentElement.dataset;
     console.log(dataset);
     sendRequest("call.php",
     [
         "action=open",
         "id=" + dataset.id
     ], function(data) {
-        location.href = "view.php?id=" + data.content.link;
-    });
+        console.log(data);
+        //location.href = "view.php?id=" + data.content.id;
+    });*/
 }
 
 function showError(error) {
@@ -395,7 +399,7 @@ function initMaterialize()
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems, {
             //direction: "left"
-            toolbarEnabled: true
+            toolbarEnabled: !FAB_USE_SUBBUTTONS
         });
 
         var elems = document.querySelectorAll('.modal');
