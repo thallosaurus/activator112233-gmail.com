@@ -42,20 +42,24 @@ define("MAX_ITEMS", 25);
 
 connectDB(false);
 
-function get_in_radius($lat, $lon, $rad, $page)
+function get_in_radius($lat, $lon, $rad, $cat, $page)
 {
     //$start = $page * MAX_ITEMS;
     //$end = $page * MAX_ITEMS + MAX_ITEMS;
     
-    $start = 0;
-    $end = 25;
+    //$start = 0;
+    //$end = 25;
+    $filter = ($cat != -1) ? 1 : NULL;
+    //$cat = ($cat == -1) ? "\"%\"" : $cat;
 
     //print("page: " . $start . PHP_EOL . "end: " . $end);
     $stmt = dbExec("find_in_radius",
         array(
             "u_rad" => $rad,
             "u_lat" => $lat,
-            "u_lon" => $lon
+            "u_lon" => $lon,
+            "ignorewhere" => $filter,
+            "cat" => $cat
         )
     );
 

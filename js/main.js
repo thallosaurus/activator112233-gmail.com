@@ -10,6 +10,7 @@ const TEXT = 1;
 let currLat, currLon, gpsId;
 
 let page = 0;
+let category = -1;
 
 let threadId;
 
@@ -60,13 +61,13 @@ class TableRow {
         var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(0);
 
         if (seconds < 60) {
-            return seconds + " Sec";
+            return seconds + " s";
         } else if (minutes < 60) {
-            return minutes + " Min";
+            return minutes + " m";
         } else if (hours < 24) {
-            return hours + " Hrs";
+            return hours + " h";
         } else {
-            return days + " Days"
+            return days + " d"
         }
     }
 
@@ -155,6 +156,7 @@ function update()
         "action=update",
         "lat=" + currLat,
         "lon=" + currLon,
+        "cat=" + category,
         "page=" + page
     ],
     insertDataIntoTable);
@@ -337,12 +339,15 @@ window.onload = function()
 {
     let url = new this.URLSearchParams(location.search);
     threadId = url.get("id") != null ? url.get("id") : -1;
+    category = url.get("cat") != null ? url.get("cat") : -1;
     
     x = document.getElementById("x");
     //initOverscrollLoad();
     M.AutoInit();
     initMaterialize();
     //
+
+    enable_location();
 }
 
 function initOverscrollLoad()
@@ -360,7 +365,7 @@ function initOverscrollLoad()
 
 function enable_location()
 {
-    hideGPSCard();
+    //hideGPSCard();
     geoId = navigator.geolocation.watchPosition(this.retrieve_posts_in_location, this.showError, geoOptions);
 }
 

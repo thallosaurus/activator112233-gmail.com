@@ -62,6 +62,7 @@ function color()
             </div>
         </nav>-->
         <li><a href="https://github.com/thallosaurus/liesmich/">GitHub</a></li>
+        <li><a href="index.php?cat=7">#tests category</a></li>
       </ul>
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
     <!--<input type="button" id="add_link" onclick="add_link()" value="Add Link"> -->
@@ -72,7 +73,7 @@ function color()
     <div style="display: none" id="x">Log:</div>
 
     <!-- Activate GPS Card -->
-    <div class="row">
+    <!--<div class="row">
         <div class="col s12 m6" id="activate_gps">
           <div class="card <?php color() ?> darken-1">
             <div class="card-content white-text">
@@ -80,11 +81,11 @@ function color()
               <p>To use this app you need to enable locationservices. This app sends your location to the backend server and returns posts around you in a radius of 25km. If you post something, your location will be saved with what you posted (Without IP, for now)!</p>
             </div>
             <div class="card-action">
-              <a onclick="enable_location()" href="#">Ok, activate!</a>
+              <a onclick="enable_location()">Ok, activate!</a>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
 
     <!-- FAB -->
     <div class="fixed-action-btn">
