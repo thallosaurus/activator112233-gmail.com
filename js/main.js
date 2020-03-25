@@ -348,7 +348,7 @@ function hideGPSCard()
 function saveCategories(data)
 {
     console.log(data);
-    for (let d of data.content.cat)
+    for (let d of data)
     {
         categories.acdata[d.value] = null;
         categories.icon_data[d.value] = d.icon;
