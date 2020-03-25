@@ -41,13 +41,13 @@ function generate_pins()
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest.php">
     <script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.6/pwacompat.min.js",
     integrity="sha384-GOaSLecPIMCJksN83HLuYf9FToOiQ2Df0+0ntv7ey8zjUHESXhthwvq9hXAZTifA",
     crossorigin="anonymous"></script>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="img/icon512.png">
+    <link rel="apple-touch-icon" href="img/icon<?php print get_dev()?>512.png">
 
     <link rel="stylesheet" href="css/main.css">
 
@@ -93,7 +93,7 @@ function generate_pins()
             </div>
         </nav>-->
         
-        <li><a href="index.php?cat=-1">All Posts</a></li>
+        <li><a href="index.php?cat=-1"><i class="material-icons">all_inclusive</i>All Posts</a></li>
         <?php
             echo generate_pins();
         ?>

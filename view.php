@@ -18,7 +18,7 @@ $thread = dbExec("get_whole_topic", array("id" => $id))->fetchAll(PDO::FETCH_ASS
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest.php">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" href="img/icon512.png">
