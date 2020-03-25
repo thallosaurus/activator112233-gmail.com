@@ -137,9 +137,12 @@ function update()
 function insertDataIntoTable(data)
 {
     console.log(data);
+
+    saveCategories(data.content.cat);
+
     let posts = document.getElementById("posts");
     posts.innerHTML = "";
-    let table = buildTable(data.content);
+    let table = buildTable(data.content.posts);
     posts.append(table);
 }
 
@@ -377,7 +380,7 @@ function initMaterialize()
         });
     });
 
-    sendRequest("call.php", ["action=get_categories"], saveCategories);
+    //sendRequest("call.php", ["action=get_categories"], saveCategories);
 
     let ac_cat = document.querySelectorAll(".category-picker");
     console.log(ac_cat);
