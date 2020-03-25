@@ -23,6 +23,8 @@ function run()
     $media = isset($_POST["media"]) ?   trim($_POST["media"])   :   null;
     $page = isset($_POST["page"])   ?   trim($_POST["page"])    :   1;
 
+    file_put_contents("php://stderr", "something happened!");
+
     switch ($action)
     {
         case "update":
