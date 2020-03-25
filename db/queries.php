@@ -18,6 +18,9 @@ $GLOBALS["lm"]["QRY"]["cat"]
 $GLOBALS["lm"]["QRY"]["search_for_cat"]
     = "SELECT `id` FROM `categories` WHERE `value` = :name";
 
+$GLOBALS["lm"]["QRY"]["search_for_cat_by_id"]
+    = "SELECT `id`, `value`, `icon` FROM `categories` WHERE `id` = :id";
+
 $GLOBALS["lm"]["QRY"]["create_cat"]
     = "INSERT INTO `categories`(`value`, `icon`) VALUES (:name, :icon)";
 ?>

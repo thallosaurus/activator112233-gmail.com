@@ -80,6 +80,7 @@ class TableRow {
     {
         let row = document.createElement("tr");
         row.append(this.getIcon());
+        //row.className = "highlight";
         for (let val in this.data)
         {
             let td = document.createElement("td");
@@ -393,7 +394,8 @@ function initMaterialize()
     //document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems, {
-            direction: "left"
+            //direction: "left"
+            toolbarEnabled: true
         });
 
         var elems = document.querySelectorAll('.modal');

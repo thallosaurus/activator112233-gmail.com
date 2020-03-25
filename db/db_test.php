@@ -28,7 +28,6 @@
  ********************************************************************************/
 
 require("db.php");
-require("./lib/categories.php");
 
 define("FIXED_RADIUS", 15);
 define("FIXED_USER_LAT", 12.083598); //Franz-Zebisch-Straße, Weiden i. d. Opf
@@ -49,7 +48,7 @@ function get_in_radius($lat, $lon, $rad, $cat, $page)
     
     //$start = 0;
     //$end = 25;
-    $filter = ($cat != -1) ? 1 : NULL;
+    $filter = ($cat > 0) ? 1 : NULL;
     //$cat = ($cat == -1) ? "\"%\"" : $cat;
 
     //print("page: " . $start . PHP_EOL . "end: " . $end);
@@ -152,6 +151,12 @@ function get_categories()
 {
     $res = dbExec("cat")->fetchAll(PDO::FETCH_ASSOC);
     //return new Categories($res);
+    return $res;
+}
+
+function get_category_by_id($id)
+{
+    $res = dbExec("search_for_cat_by_id", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
     return $res;
 }
 ?>

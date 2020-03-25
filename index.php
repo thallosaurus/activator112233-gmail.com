@@ -1,11 +1,39 @@
 <?php
 require("./vendor/autoload.php");
 require("./db/lib/config.php");
+require("./db/db_test.php");
 echo "";
 
 function color()
 {
     echo $GLOBALS["lm"]["CNF"]["COLOR"];
+}
+
+function get_pinned_cats()
+{
+    return getenv("PINNED_CATEGORIES");
+}
+
+function generate_pins()
+{
+    //<li><a href="index.php?cat=7">#tests category</a></li>
+    $str = "";
+    $a = get_pinned_cats();
+    debugWrite($a);
+
+
+    $cats = explode(",",get_pinned_cats());
+    for ($i = 0; $i < sizeof($cats); $i++)
+    {
+        $c = get_category_by_id($cats[$i]);
+
+        /*foreach($c as $t)
+        {
+            debugWrite($t);
+        }*/
+        $str = $str . "<li ><a href='index.php?cat=" . $c[0]["id"] . "'><i class='material-icons'>" . $c[0]["icon"] . "</i>#" . $c[0]["value"] . " category</a></li>";
+    }
+    return $str;
 }
 ?>
 <!DOCTYPE html>
@@ -35,6 +63,9 @@ function color()
     <title>(α)</title>
 </head>
 <body class="<?php color() ?> lighten-5">
+    <div id="egg">
+        <img id="kitty" src="img/cat.png">
+    </div>
     <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper <?php color() ?> darken-4">
@@ -61,9 +92,14 @@ function color()
                 </form>
             </div>
         </nav>-->
-        <li><a href="https://github.com/thallosaurus/liesmich/">GitHub</a></li>
+        
         <li><a href="index.php?cat=-1">All Posts</a></li>
-        <li><a href="index.php?cat=7">#tests category</a></li>
+        <?php
+            echo generate_pins();
+        ?>
+        <li class="divider"></li>
+        <!-- class='waves-effect waves-light' -->
+        <li><a href="https://github.com/thallosaurus/liesmich/"><i class="material-icons">code</i>GitHub</a></li>
       </ul>
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
     <!--<input type="button" id="add_link" onclick="add_link()" value="Add Link"> -->
@@ -89,14 +125,18 @@ function color()
       </div>-->
 
     <!-- FAB -->
-    <div class="fixed-action-btn">
+    <div class="fixed-action-btn toolbar">
         <a class="btn-floating btn-large red">
           <i class="large material-icons">add</i>
         </a>
         <ul>
-          <li><a class="btn-floating red modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
+          <!--<li><a class="btn-floating red modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
           <li><a class="btn-floating yellow darken-1 modal-trigger disabled" data-target="add_photo"><i class="material-icons">insert_photo</i></a></li>
-          <li><a class="btn-floating green modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>
+          <li><a class="btn-floating green modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>-->
+          <li><a class="modal-trigger" data-target="add_text"><i class="material-icons">text_fields</i></a></li>
+          <li><a class="modal-trigger disabled" data-target="add_photo"><i class="material-icons">insert_photo</i></a></li>
+          <li><a class="modal-trigger" data-target="add_link"><i class="material-icons">link</i></a></li>
+        
         </ul>
       </div>
 
