@@ -63,9 +63,9 @@ function generate_pins()
     <title>(α)</title>
 </head>
 <body class="<?php color() ?> lighten-5">
-    <div id="egg">
+    <!--<div id="egg">
         <img id="kitty" src="img/cat.png">
-    </div>
+    </div>-->
     <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper <?php color() ?> darken-4">
