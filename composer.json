@@ -1,5 +1,6 @@
 {
     "require": {
-        "guzzlehttp/guzzle": "3.7"
+        "guzzlehttp/guzzle": "3.7",
+        "heroku/heroku-buildpack-php": "^173.0"
     }
 }
