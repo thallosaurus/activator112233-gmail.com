@@ -1,6 +1,5 @@
-RewriteEngine On
+#RewriteEngine On
 
-RewriteCond %{DOCUMENT_ROOT}/v/$1 !-f
+#RewriteCond %{DOCUMENT_ROOT}/v/$1 !-f
 # RewriteRule ^/?([a-z]+)/(.*)$ /view.php?id=$1
-RewriteRule     ^/(.*)$   https://%{HTTP_HOST}/$1    [redirect,last]
-
+#RewriteRule     ^/(.*)$   https://%{HTTP_HOST}/$1    [redirect,last]
