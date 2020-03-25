@@ -19,5 +19,5 @@ $GLOBALS["lm"]["QRY"]["search_for_cat"]
     = "SELECT `id` FROM `categories` WHERE `value` = :name";
 
 $GLOBALS["lm"]["QRY"]["create_cat"]
-    = "INSERT INTO `categories`(`value`, `folder`) VALUES (:name, :icon)";
+    = "INSERT INTO `categories`(`value`, `icon`) VALUES (:name, :icon)";
 ?>
