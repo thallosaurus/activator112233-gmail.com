@@ -62,6 +62,7 @@ function color()
             </div>
         </nav>-->
         <li><a href="https://github.com/thallosaurus/liesmich/">GitHub</a></li>
+        <li><a href="index.php?cat=-1">All Posts</a></li>
         <li><a href="index.php?cat=7">#tests category</a></li>
       </ul>
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
