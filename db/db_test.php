@@ -71,7 +71,7 @@ function get_in_radius($lat, $lon, $rad, $page)
         $arr[] = array($r["title"], $r["category"], $r["distance"] . "km");
     }
 
-    return $res;
+    return array("posts" => $res, "cat" => get_categories());
 }
 
 function get_category_id($name)

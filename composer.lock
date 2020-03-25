@@ -4,10 +4,10 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2a5764da1e2f234114ecf4222c46e58",
+    "content-hash": "4371c0bdbfbca3ba573ff43b3ef42f93",
     "packages": [
         {
-            "name": "guzzle/guzzle",
+            "name": "guzzlehttp/guzzle",
             "version": "v3.7.0",
             "source": {
                 "type": "git",
@@ -96,7 +96,6 @@
                 "rest",
                 "web service"
             ],
-            "abandoned": "guzzlehttp/guzzle",
             "time": "2013-06-11T00:24:07+00:00"
         },
         {
