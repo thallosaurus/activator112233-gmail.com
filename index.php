@@ -48,9 +48,9 @@ function color()
           </ul>
         </div>
       </nav>
-    
+      </div>
       <ul class="sidenav" id="mobile-demo">
-        <nav>
+        <!--<nav>
             <div class="nav-wrapper <?php color() ?> darken-4">
                 <form>
                     <div class="input-field">
@@ -60,10 +60,9 @@ function color()
                     </div>
                 </form>
             </div>
-        </nav>
-        <li><a href="#">Search results go here</a></li>
+        </nav>-->
+        <li><a href="https://github.com/thallosaurus/liesmich/">GitHub</a></li>
       </ul>
-    </div>
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
     <!--<input type="button" id="add_link" onclick="add_link()" value="Add Link"> -->
     <div id="debug"></div>

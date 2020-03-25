@@ -86,7 +86,7 @@ function get_category_id($name)
 
     if (sizeof($cat) == 0)
     {
-        dbExec("create_cat", array("name" => $name));
+        dbExec("create_cat", array("name" => $name, "icon" => "folder"));
         return get_last_insert_id();
     }
     else
