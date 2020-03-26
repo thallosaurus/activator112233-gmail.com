@@ -13,7 +13,7 @@ To develop locally without a cloud, you need the following components installed 
  - [heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
 #### Install Dependencies
-To pull the latest changes of dependencies, run ```php composer.phar install```. This downloads all dependencies and sets up the environment.
+To pull the latest changes of dependencies, download composer from [here](https://getcomposer.org/download/), move it to the folder and run ```php composer.phar install```. This downloads all dependencies and sets up the environment.
 
 To setup the database, create a ".env" file and give it the following content:
 ```DB_HOST=<MySQL Database>
