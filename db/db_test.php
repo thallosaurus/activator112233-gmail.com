@@ -162,8 +162,16 @@ function get_category_by_id($id)
 
 function nukeTableDebug()
 {
-    dbExec("whys_the_fbi_here")->fetchAll(PDO::FETCH_ASSOC);
-    header("Location: ../index.php");
+    $a = array("t_categories", "t_coordinates", "t_posts");
+
+    for ($i = 0; $i < sizeof($a); $i++)
+    {
+        dbExec($a[$i])->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    echo "Whole Database was cleared";
+
+    //header("Location: ../index.php");
     die();
 }
 ?>
