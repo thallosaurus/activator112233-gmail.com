@@ -28,5 +28,11 @@ $thread = dbExec("get_whole_topic", array("id" => $id))->fetchAll(PDO::FETCH_ASS
 <body>
     <h1><?php echo $thread[0]["title"]?></h1>
     <span><?php echo $thread[0]["content"]?>
+    <span><?php echo "Post-Id: " . $id?></span>
+    <form action="/db/call.php" method="post">
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="id" value="<?php print $id?>">
+        <input type="submit" value="Löschen">
+    </form>
 </body>
 </html>
