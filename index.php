@@ -18,24 +18,22 @@ function generate_pins()
 {
     //<li><a href="index.php?cat=7">#tests category</a></li>
     $str = "";
-    $a = get_pinned_cats();
+    $a = get_categories();
     debugWrite($a);
 
+    $str = "";
 
-    $cats = explode(",",get_pinned_cats());
-    for ($i = 0; $i < sizeof($cats); $i++)
+    //$cats = explode(",",get_pinned_cats());
+    for ($i = 0; $i < sizeof($a); $i++)
     {
-        $c = get_category_by_id($cats[$i]);
+        //$c = get_category_by_id($cats[$i]);
 
         /*foreach($c as $t)
         {
             debugWrite($t);
             print_r()
         }*/
-        if (sizeof($c) > 0)
-        {
-            $str = $str . "<li ><a href='index.php?cat=" . $c[0]["id"] . "'><i class='material-icons'>" . $c[0]["icon"] . "</i>#" . $c[0]["value"] . " category</a></li>";
-        }
+        $str = $str . "<li ><a href='index.php?cat=" . $a[0]["id"] . "'><i class='material-icons'>" . $a[0]["icon"] . "</i>#" . $a[0]["value"] . " category</a></li>";
     }
     return $str;
 }
@@ -76,10 +74,13 @@ function generate_pins()
           <a href="#!" class="brand-logo">(α)</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
+          <?php 
+        if (is_dev())
+        {
+            echo '<li><a href="/db/call.php?nuke=1">Nuke database</a></li>';
+            echo '<li><a href="/newview.php">Test New View</a></li>';
+        }
+        ?>
           </ul>
         </div>
       </nav>
@@ -108,6 +109,7 @@ function generate_pins()
         if (is_dev())
         {
             echo '<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>';
+            echo '<li><a href="/newview.php"><i class="material-icons">delete_sweep</i>Test New View</a></li>';
         }
         ?>
             <!--<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>-->
@@ -159,7 +161,7 @@ function generate_pins()
                     </a>
                 </li>
                 <li>
-                    <a class="btn-floating green modal-trigger" data-target="add_link">
+                    <a class="btn-floating green modal-trigger" disabled data-target="add_link">
                         <i class="material-icons">link</i>
                     </a>
                 </li>';
