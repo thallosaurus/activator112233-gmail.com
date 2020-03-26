@@ -37,4 +37,7 @@ $GLOBALS["lm"]["QRY"]["t_categories"]
 
 $GLOBALS["lm"]["QRY"]["t_coordinates"]
     = "TRUNCATE `coordinates`";
+
+$GLOBALS["lm"]["QRY"]["restore_default_categories"]
+    = "INSERT INTO `categories`(`value`, `icon`) VALUES ('all', 'folder')";
 ?>
