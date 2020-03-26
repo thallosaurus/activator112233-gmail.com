@@ -9,7 +9,16 @@ if ($id == -1)
     header("Location: index.php");
 }
 
-$thread = dbExec("get_whole_topic", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
+if ($id == -2)
+{
+    $a = array();
+    $a[] = get_fake_post();
+    $thread = $a;
+}
+else
+{
+    $thread = dbExec("get_whole_topic", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +32,7 @@ $thread = dbExec("get_whole_topic", array("id" => $id))->fetchAll(PDO::FETCH_ASS
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" href="img/icon512.png">
 
-    <title><?php echo $thread[0]["title"]?></title>
+    <title><?php print_r($thread); echo $thread[0]["title"]?></title>
 </head>
 <body>
     <h1><?php echo $thread[0]["title"]?></h1>

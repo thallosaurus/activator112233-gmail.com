@@ -19,7 +19,8 @@ function generate_pins()
     //<li><a href="index.php?cat=7">#tests category</a></li>
     $str = "";
     $a = get_categories();
-    debugWrite($a);
+    
+    //debugWrite($a);
 
     $str = "";
 
@@ -33,7 +34,7 @@ function generate_pins()
             debugWrite($t);
             print_r()
         }*/
-        $str = $str . "<li ><a href='index.php?cat=" . $a[0]["id"] . "'><i class='material-icons'>" . $a[0]["icon"] . "</i>#" . $a[0]["value"] . " category</a></li>";
+        $str = $str . "<li ><a href='index.php?cat=" . $a[$i]["id"] . "'><i class='material-icons'>" . $a[$i]["icon"] . "</i>#" . $a[$i]["value"] . " category</a></li>";
     }
     return $str;
 }
@@ -99,9 +100,7 @@ function generate_pins()
         </nav>-->
         
         <li><a href="index.php?cat=-1"><i class="material-icons">all_inclusive</i>All Posts</a></li>
-        <?php
-            echo generate_pins();
-        ?>
+        
         <li class="divider"></li>
         <!-- class='waves-effect waves-light' -->
         <li><a href="https://github.com/thallosaurus/liesmich/"><i class="material-icons">code</i>GitHub</a></li>
@@ -111,6 +110,8 @@ function generate_pins()
             echo '<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>';
             echo '<li><a href="/newview.php"><i class="material-icons">delete_sweep</i>Test New View</a></li>';
         }
+        echo '<li class="divider"></li>';
+        echo generate_pins();
         ?>
             <!--<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>-->
 

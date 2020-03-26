@@ -69,6 +69,7 @@ function get_in_radius($lat, $lon, $rad, $cat, $page)
     //print_r($res);
 
     $arr = array();
+    $res[] = get_fake_post();
     foreach ($res as $r)
     {
         $then = strtotime($r["timestamp"]);
@@ -182,5 +183,24 @@ function nukeTableDebug()
 
     header("Location: ../index.php");
     die();
+}
+
+function get_fake_post()
+{
+    $age = time() - strtotime("2020-03-26 04:20:59");
+    $content = "Hey you, thanks for stepping bye! This is just a Test mockup social networking app. Its source code is on GitHub, so be sure to check it out! Use this Web-App on a smartphone. This was tested on a Samsung Galaxy S8 Plus and iPhone 11 Pro. Do whatever the fuck you want here, but be sure to nuke the database afterwards. If this is a dev build, you'll find a link to the database nuker. It automatically truncates all tables it finds and resets the whole database. Whats left is the category for #all and this note, because its hardcoded, lol. You can post here, but be sure to understand the twist - you need to use HTTPs for this - all posts you make get tied to your GPS Location. When you post them, they just go in my database and get stored there. Only there. When you wipe the whole database, everything gets deleted. Check out my Source Code for proof.";
+    //id, timestamp, db_lat, db_lon, title, category, type, AS distance, age 
+    return array(
+        "id" => -2,
+        "timestamp" => "2020-03-26 04:20:59",   //sorry boys, theres no 69th second :(
+        "db_lat" => 0.00000,
+        "db_lon" => 0.00000,
+        "title" => "Readme, please",
+        "content" => $content,
+        "category" => 1,
+        "type" => 1,
+        "distance" => 8,
+        "age" => $age
+    );
 }
 ?>
