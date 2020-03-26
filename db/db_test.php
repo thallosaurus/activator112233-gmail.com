@@ -159,4 +159,11 @@ function get_category_by_id($id)
     $res = dbExec("search_for_cat_by_id", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
     return $res;
 }
+
+function nukeTableDebug()
+{
+    dbExec("whys_the_fbi_here")->fetchAll(PDO::FETCH_ASSOC);
+    header("Location: ../index.php");
+    die();
+}
 ?>

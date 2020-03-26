@@ -30,8 +30,12 @@ function generate_pins()
         /*foreach($c as $t)
         {
             debugWrite($t);
+            print_r()
         }*/
-        $str = $str . "<li ><a href='index.php?cat=" . $c[0]["id"] . "'><i class='material-icons'>" . $c[0]["icon"] . "</i>#" . $c[0]["value"] . " category</a></li>";
+        if (sizeof($c) > 0)
+        {
+            $str = $str . "<li ><a href='index.php?cat=" . $c[0]["id"] . "'><i class='material-icons'>" . $c[0]["icon"] . "</i>#" . $c[0]["value"] . " category</a></li>";
+        }
     }
     return $str;
 }
@@ -100,6 +104,14 @@ function generate_pins()
         <li class="divider"></li>
         <!-- class='waves-effect waves-light' -->
         <li><a href="https://github.com/thallosaurus/liesmich/"><i class="material-icons">code</i>GitHub</a></li>
+        <?php 
+        if (is_dev())
+        {
+            echo '<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>';
+        }
+        ?>
+            <!--<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>-->
+
       </ul>
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
     <!--<input type="button" id="add_link" onclick="add_link()" value="Add Link"> -->
