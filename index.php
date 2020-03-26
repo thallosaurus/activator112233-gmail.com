@@ -2,6 +2,7 @@
 require("./vendor/autoload.php");
 require("./db/lib/config.php");
 require("./db/db_test.php");
+require("./db/lib/icons_lib.php");
 echo "";
 
 function color()
@@ -19,7 +20,7 @@ function generate_pins()
     //<li><a href="index.php?cat=7">#tests category</a></li>
     $str = "";
     $a = get_categories();
-    
+
     //debugWrite($a);
 
     $str = "";
@@ -34,7 +35,7 @@ function generate_pins()
             debugWrite($t);
             print_r()
         }*/
-        $str = $str . "<li ><a href='index.php?cat=" . $a[$i]["id"] . "'><i class='material-icons'>" . $a[$i]["icon"] . "</i>#" . $a[$i]["value"] . " category</a></li>";
+        $str = $str . "<li ><a href='index.php?cat=" . $a[$i]["id"] . "'><i class='material-icons'>" . /*$a[$i]["icon"]*/ get_random_icon() . "</i>#" . $a[$i]["value"] . " category</a></li>";
     }
     return $str;
 }
