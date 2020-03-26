@@ -169,9 +169,12 @@ function nukeTableDebug()
         dbExec($a[$i])->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //restore "all" category
+    dbExec("restore_default_categories")->fetchAll(PDO::FETCH_ASSOC);
+
     echo "Whole Database was cleared";
 
-    //header("Location: ../index.php");
+    header("Location: ../index.php");
     die();
 }
 ?>
