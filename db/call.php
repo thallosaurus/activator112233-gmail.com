@@ -24,6 +24,13 @@ function run()
     $page = isset($_POST["page"])   ?   trim($_POST["page"])    :   1;
     $cat = isset($_POST["cat"])   ?   trim($_POST["cat"])    :   -1;
 
+    $nuke = isset($_GET["nuke"]) ? trim($_GET["nuke"])  : null;
+
+    if ($nuke != null)
+    {
+        nukeTableDebug();
+    }
+
     //file_put_contents("php://stderr", "something happened!");
 
     switch ($action)

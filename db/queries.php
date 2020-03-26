@@ -26,4 +26,15 @@ $GLOBALS["lm"]["QRY"]["create_cat"]
 
 $GLOBALS["lm"]["QRY"]["get_whole_topic"]
     = "SELECT `id`, `title`, `content`, `type`, `category` FROM `posts` WHERE `id` = :id";
+
+//NUKE
+
+$GLOBALS["lm"]["QRY"]["t_posts"]
+    = "TRUNCATE `posts`";
+
+$GLOBALS["lm"]["QRY"]["t_categories"]
+    = "TRUNCATE `categories`";
+
+$GLOBALS["lm"]["QRY"]["t_coordinates"]
+    = "TRUNCATE `coordinates`";
 ?>

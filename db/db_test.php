@@ -159,4 +159,19 @@ function get_category_by_id($id)
     $res = dbExec("search_for_cat_by_id", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
     return $res;
 }
+
+function nukeTableDebug()
+{
+    $a = array("t_categories", "t_coordinates", "t_posts");
+
+    for ($i = 0; $i < sizeof($a); $i++)
+    {
+        dbExec($a[$i])->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    echo "Whole Database was cleared";
+
+    //header("Location: ../index.php");
+    die();
+}
 ?>
