@@ -160,6 +160,12 @@ function get_category_by_id($id)
     return $res;
 }
 
+function delete($id)
+{
+    dbExec("delete_post", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
+    header("Location: ../index.php");
+}
+
 function nukeTableDebug()
 {
     $a = array("t_categories", "t_coordinates", "t_posts");

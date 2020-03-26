@@ -27,6 +27,8 @@ $GLOBALS["lm"]["QRY"]["create_cat"]
 $GLOBALS["lm"]["QRY"]["get_whole_topic"]
     = "SELECT `id`, `title`, `content`, `type`, `category` FROM `posts` WHERE `id` = :id";
 
+$GLOBALS["lm"]["QRY"]["delete_post"]
+    = "DELETE coordinates, posts FROM coordinates INNER JOIN posts WHERE posts.id = coordinates.id  AND coordinates.id = :id";
 //NUKE
 
 $GLOBALS["lm"]["QRY"]["t_posts"]

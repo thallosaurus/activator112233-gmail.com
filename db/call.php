@@ -44,6 +44,9 @@ function run()
         case "open":
             return open($id);
 
+        case "delete":
+            return delete($id);
+
         case "get_categories":
             return get_categories();
 
