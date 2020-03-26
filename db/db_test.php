@@ -171,7 +171,7 @@ function nukeTableDebug()
 
     echo "Whole Database was cleared";
 
-    //header("Location: ../index.php");
+    header("Location: ../index.php");
     die();
 }
 ?>
