@@ -42,4 +42,7 @@ $GLOBALS["lm"]["QRY"]["t_coordinates"]
 
 $GLOBALS["lm"]["QRY"]["restore_default_categories"]
     = "INSERT INTO `categories`(`value`, `icon`) VALUES ('all', 'folder')";
+
+$GLOBALS["lm"]["QRY"]["like_post"]
+    = "UPDATE `posts` SET `likes`= `likes` + 1 WHERE 1";
 ?>
