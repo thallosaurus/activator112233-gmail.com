@@ -73,7 +73,7 @@ function generate_pins()
     <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper <?php color() ?> darken-4">
-          <a href="#!" class="brand-logo">(α)</a>
+          <a href="#!" class="brand-logo center">(α)</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
           <?php 

@@ -40,6 +40,10 @@ window.onload = function ()
             add_comment(e.target);
         });
     });
+
+    //Init sidenav:
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
 }
 
 function add_comment(elem)
