@@ -57,6 +57,39 @@ function generate_pins()
     }
     return $str;
 }
+
+function generate_comments($id)
+{
+    /* 
+            <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+        </ul>
+    */
+
+    $c = get_comments_for_post($id);
+
+    $str = "<ul class='collapsible'>";
+    for ($i = 0; $i < sizeof($c); $i++)
+    {
+        $str = $str . "<li " . ($i < 4 ? "class='active'" : "")  . ">";
+        $str = $str . "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>". $i . ": " . $c[$i]["from_user"]  ."</div>";
+        $str = $str . "<div class='collapsible-body'" . ($i < 4 ? "style='display: block'" : "") . "><span>". $c[$i]["body"] ."</span></div>";
+        $str = $str . "</li>";
+    }
+    $str = $str . "</ul>";
+    return $str;
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -157,20 +190,23 @@ function generate_pins()
             </div>
         </div>
 
-        <ul class="collapsible">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
+        <!--<ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+        </ul>-->
+        <?php
+            echo generate_comments($id);
+        ?>
 
     </div>
     <div style="display: none" id="x">Log:</div>
@@ -203,38 +239,17 @@ function generate_pins()
             if (fab_use_subbuttons())
             {
                 print '<li>
-                    <a class="btn-floating red modal-trigger" data-target="add_text">
+                    <a class="btn-floating red modal-trigger" data-target="add_comment">
                         <i class="material-icons">text_fields</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="btn-floating yellow darken-1 modal-trigger disabled" data-target="add_photo">
-                        <i class="material-icons">insert_photo</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="btn-floating green modal-trigger" disabled data-target="add_link">
-                        <i class="material-icons">link</i>
                     </a>
                 </li>';
             }
             else
             {
                 print '<li>
-                    <a class="modal-trigger" data-target="add_text">
+                    <a class="modal-trigger" data-target="add_comment">
                         <i class="material-icons">text_fields</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="modal-trigger disabled" data-target="add_photo">
-                        <i class="material-icons">insert_photo</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="modal-trigger" data-target="add_link">
-                        <i class="material-icons">link</i>
-                    </a>
-                </li>';
+                    </a>';
             }
             ?>
         </ul>
@@ -242,16 +257,12 @@ function generate_pins()
 
     <!-- Modal - Add Contents -->
     <!-- Add Text -->
-    <div id="add_text" class="modal">
+    <div id="add_comment" class="modal">
         <div class="modal-content">
             <div class="row">
-                <h4>Add a Textpost</h4>
-                <form class="col s12" data-type="add_post" data-t="1">
-                    <div class="input-field s12">
-                        <i class="material-icons prefix">title</i>
-                        <input type="text" name="title" id="title" data-length="100" data-use-counter="true" required>
-                        <label for="title">Title</label>
-                    </div>
+                <h4>Add a Comment</h4>
+                <form class="col s12" data-type="add_post">
+
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">message</i>
@@ -260,13 +271,6 @@ function generate_pins()
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix cat-text">folder</i>
-                            <input value="all" type="text" name="category" class="category-picker" id="category" data-length="20" data-use-counter="true">
-                            <label for="category">Category</label>
-                        </div>
-                    </div>
                     <div class="modal-footer">
                         <!--<a href="#!" class="modal-close waves-effect waves-green btn-flat">Send</a>-->
                         <button class="btn-flat waves-effect waves-light" type="submit" name="action">Send it
@@ -278,62 +282,6 @@ function generate_pins()
         </div>
     </div>
 
-    <!-- Add Photo -->
-    <div id="add_photo" class="modal">
-        <div class="modal-content">
-            <h4>Add a Photo</h4>
-            <form class="col s12" data-type="add_post" data-t="2">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">title</i>
-                        <input type="text" id="title" data-length="100" data-use-counter="true">
-                        <label for="title">Title</label>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix cat-text">folder</i>
-                        <input value="all" type="text" name="category" class="category-picker" id="category" data-length="20" data-use-counter="true">
-                        <label for="category">Category</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!--<textarea name="content" id="content" class="materialize-textarea" data-length="500" data-use-counter="true"></textarea>-->
-                    <div class="col s12">
-                        <div class="file-field input-field">
-                            <div class="btn">
-                                <span><i class="material-icons">insert_photo</i></span>
-                                <input type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" data-dontuse="true" type="text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <!--<a href="#!" class="modal-close waves-effect waves-green btn-flat">Send</a>-->
-                    <button class="btn-flat waves-effect waves-light modal-close" type="submit" name="action">Send it
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Add Link -->
-    <div id="add_link" class="modal">
-        <div class="modal-content">
-            <h4>Add Link</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
 </body>
 <script>
     const FAB_USE_SUBBUTTONS = <?php print (fab_use_subbuttons() ? "true" : "false")?>

@@ -169,7 +169,7 @@ function delete($id)
 
 function nukeTableDebug()
 {
-    $a = array("t_categories", "t_coordinates", "t_posts");
+    $a = array("t_categories", "t_coordinates", "t_posts", "t_comments");
 
     for ($i = 0; $i < sizeof($a); $i++)
     {
@@ -202,5 +202,21 @@ function get_fake_post()
         "distance" => 8,
         "age" => $age
     );
+}
+
+function get_comments_for_post($id)
+{
+    $comments = dbExec("get_comments_for_id", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
+    return $comments;
+}
+
+function add_comment($id, $content)
+{
+    //:id, NOW(), :body, :from_user
+    dbExec("insert_comment", array(
+        "id" => $id,
+        "body" => $content,
+        "from_user" => "Anonymous"
+    ));
 }
 ?>

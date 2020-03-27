@@ -18,6 +18,7 @@ if ($id == -2)
 else
 {
     $thread = dbExec("get_whole_topic", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
+    //$comments = get_comments_for_post($id);
 }
 ?>
 

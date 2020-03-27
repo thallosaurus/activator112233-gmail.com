@@ -40,9 +40,18 @@ $GLOBALS["lm"]["QRY"]["t_categories"]
 $GLOBALS["lm"]["QRY"]["t_coordinates"]
     = "TRUNCATE `coordinates`";
 
+$GLOBALS["lm"]["QRY"]["t_comments"]
+    = "TRUNCATE `comments`";
+
 $GLOBALS["lm"]["QRY"]["restore_default_categories"]
     = "INSERT INTO `categories`(`value`, `icon`) VALUES ('all', 'folder')";
 
 $GLOBALS["lm"]["QRY"]["like_post"]
     = "UPDATE `posts` SET `likes`= `likes` + 1 WHERE 1";
+
+$GLOBALS["lm"]["QRY"]["insert_comment"]
+    = "INSERT INTO `comments`(`post_id`, `ts`, `body`, `from_user`) VALUES (:id, NOW(), :body, :from_user)";
+
+$GLOBALS["lm"]["QRY"]["get_comments_for_id"]
+    = "SELECT `post_id`, `comment_id`, `ts`, `body`, `from_user` FROM `comments` WHERE `post_id` = :id ORDER BY `ts` DESC";
 ?>

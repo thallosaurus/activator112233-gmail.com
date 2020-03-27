@@ -50,6 +50,9 @@ function run()
         case "get_categories":
             return get_categories();
 
+        case "comment":
+            return add_comment($id, $content);
+
         default:
             throw new Exception("Unknown action");
         break;
