@@ -34,3 +34,8 @@ To run it locally, use
 
 if you use windows, use
 ```heroku local dev```
+
+#### Local Demo
+Switch to [https://liesmich.herokuapp.com](https://liesmich.herokuapp.com) to see the app live in action!
+
+For the latest dev release, switch over to [https://liesmichdev.herokuapp.com](https://liesmichdev.herokuapp.com). To view the dev source, switch branch to "development"

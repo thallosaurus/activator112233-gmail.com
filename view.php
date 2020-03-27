@@ -81,18 +81,22 @@ function generate_comments($id)
 
     $c = get_comments_for_post($id);
 
-    $str = $str . "<!-- " . "Sizeof: " . sizeof($c) . "-->";
+    $str = $str . "<!-- " . "Sizeof: " . sizeof($c) . "--><span><h5>Comments</h5></span>";
     if (sizeof($c) > 0)
     {
-        $str = $str . "<ul class='collapsible'>";
+        $str = $str . "<ul class='collapsible popout'>";
         for ($i = 0; $i < sizeof($c); $i++)
         {
             $str = $str . "<li " . ($i < 1 ? "class='active'" : "")  . ">";
-            $str = $str . "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>". $i . ": " . $c[$i]["from_user"]  ."</div>";
+            $str = $str . "<div class='collapsible-header'><i class='material-icons'>comment</i>". $i . ": " . $c[$i]["from_user"]  ."</div>";
             $str = $str . "<div class='collapsible-body'" . ($i < 1 ? "style='display: block'" : "") . "><span>". $c[$i]["body"] ."</span></div>";
             $str = $str . "</li>";
         }
         $str = $str . "</ul>";
+    }
+    else
+    {
+        $str = $str . "<span>No comments yet</span>";
     }
     return $str;
 }
