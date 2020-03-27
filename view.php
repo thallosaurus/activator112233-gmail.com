@@ -84,7 +84,7 @@ function generate_comments($id)
     {
         $str = $str . "<li " . ($i < 4 ? "class='active'" : "")  . ">";
         $str = $str . "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>". $i . ": " . $c[$i]["from_user"]  ."</div>";
-        $str = $str . "<div class='collapsible-body'" . ($i < 4 ? "style='display: block'" : "") . "><span>". $c[$i]["body"] ."</span></div>";
+        $str = $str . "<div class='collapsible-body'" . ($i < 1 ? "style='display: block'" : "") . "><span>". $c[$i]["body"] ."</span></div>";
         $str = $str . "</li>";
     }
     $str = $str . "</ul>";
