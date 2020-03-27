@@ -22,6 +22,9 @@ DB_USER=<MySQL Username>
 DB_PW=<MySQL Username>
 DB_TABLE=<MySQL Tablename>
 PAGECOLOR=<Set color tint for page>
+PINNED_CATEGORIES=<Legacy, unused>
+FAB_USE_SUBBUTTONS=<true, if the FAB should show subbuttons and false, if the FAB should extend into a actionbar>
+ENVIRONMENT=<When set to dev, the UI will unlock development links>
 ```
 See [Materialize](https://materializecss.com/color.html) for more information on color
 
