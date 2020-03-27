@@ -239,7 +239,7 @@ function generate_comments($id)
             {
                 print '<li>
                     <a class="btn-floating red modal-trigger" data-target="add_comment">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons">comment</i>
                     </a>
                 </li>';
             }
@@ -247,7 +247,7 @@ function generate_comments($id)
             {
                 print '<li>
                     <a class="modal-trigger" data-target="add_comment">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons">comment</i>
                     </a>';
             }
             ?>
