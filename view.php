@@ -88,7 +88,7 @@ function generate_comments($id)
         for ($i = 0; $i < sizeof($c); $i++)
         {
             $str = $str . "<li " . ($i < 1 ? "class='active'" : "")  . ">";
-            $str = $str . "<div class='collapsible-header'><i class='material-icons'>comment</i>". $i . ": " . $c[$i]["from_user"]  ."</div>";
+            $str = $str . "<div class='collapsible-header'><i class='material-icons'>comment</i>". ($i + 1) . ": " . $c[$i]["from_user"]  ."</div>";
             $str = $str . "<div class='collapsible-body'" . ($i < 1 ? "style='display: block'" : "") . "><span>". $c[$i]["body"] ."</span></div>";
             $str = $str . "</li>";
         }
