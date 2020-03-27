@@ -77,17 +77,23 @@ function generate_comments($id)
         </ul>
     */
 
+    $str = "";
+
     $c = get_comments_for_post($id);
 
-    $str = "<ul class='collapsible'>";
-    for ($i = 0; $i < sizeof($c); $i++)
+    $str = $str . "<!-- " . "Sizeof: " . sizeof($c) . "-->";
+    if (sizeof($c) > 0)
     {
-        $str = $str . "<li " . ($i < 1 ? "class='active'" : "")  . ">";
-        $str = $str . "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>". $i . ": " . $c[$i]["from_user"]  ."</div>";
-        $str = $str . "<div class='collapsible-body'" . ($i < 1 ? "style='display: block'" : "") . "><span>". $c[$i]["body"] ."</span></div>";
-        $str = $str . "</li>";
+        $str = $str . "<ul class='collapsible'>";
+        for ($i = 0; $i < sizeof($c); $i++)
+        {
+            $str = $str . "<li " . ($i < 1 ? "class='active'" : "")  . ">";
+            $str = $str . "<div class='collapsible-header'><i class='material-icons'>filter_drama</i>". $i . ": " . $c[$i]["from_user"]  ."</div>";
+            $str = $str . "<div class='collapsible-body'" . ($i < 1 ? "style='display: block'" : "") . "><span>". $c[$i]["body"] ."</span></div>";
+            $str = $str . "</li>";
+        }
+        $str = $str . "</ul>";
     }
-    $str = $str . "</ul>";
     return $str;
 }
 ?>
@@ -124,8 +130,12 @@ function generate_comments($id)
     <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper <?php color() ?> darken-4">
-          <a href="#!" class="brand-logo">(α)</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="#!" class="brand-logo center">(α)</a>
+          <!--<a href="#" data-target="mobile-demo" class="sidenav-trigger override-display-block"><i class="material-icons">menu</i></a>-->
+
+            <ul class="left">
+                <li><a href="index.php"><i class="material-icons">keyboard_arrow_left</i></a></li>
+            </ul>
           <ul class="right hide-on-med-and-down">
           <?php 
         if (is_dev())
@@ -138,36 +148,25 @@ function generate_comments($id)
         </div>
       </nav>
       </div>
-      <ul class="sidenav" id="mobile-demo">
-        <!--<nav>
-            <div class="nav-wrapper <?php color() ?> darken-4">
-                <form>
-                    <div class="input-field">
-                        <input id="search" type="search">
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                </form>
-            </div>
-        </nav>-->
+      <!--<ul class="sidenav" id="mobile-demo">
         
         <li><a href="index.php?cat=-1"><i class="material-icons">all_inclusive</i>All Posts</a></li>
         
         <li class="divider"></li>
-        <!-- class='waves-effect waves-light' -->
+        <!- class='waves-effect waves-light' ->
         <li><a href="https://github.com/thallosaurus/liesmich/"><i class="material-icons">code</i>GitHub</a></li>
         <?php 
-        if (is_dev())
+        /*if (is_dev())
         {
             echo '<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>';
             echo '<li><a href="/newview.php"><i class="material-icons">delete_sweep</i>Test New View</a></li>';
         }
         echo '<li class="divider"></li>';
-        echo generate_pins();
+        echo generate_pins();*/
         ?>
-            <!--<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>-->
+            <!--<li class="divider"></li><li><a href="/db/call.php?nuke=1"><i class="material-icons">delete_sweep</i>Nuke database</a></li>--
 
-      </ul>
+      </ul> -->
     <!--<input type="button" id="update" onclick="update()" value="Update">-->
     <!--<input type="button" id="add_link" onclick="add_link()" value="Add Link"> -->
     <div id="debug"></div>
@@ -240,7 +239,7 @@ function generate_comments($id)
             {
                 print '<li>
                     <a class="btn-floating red modal-trigger" data-target="add_comment">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons">comment</i>
                     </a>
                 </li>';
             }
@@ -248,7 +247,7 @@ function generate_comments($id)
             {
                 print '<li>
                     <a class="modal-trigger" data-target="add_comment">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons">comment</i>
                     </a>';
             }
             ?>

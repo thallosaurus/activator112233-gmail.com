@@ -3,7 +3,8 @@ require("./vendor/autoload.php");
 require("./db/lib/config.php");
 require("./db/db_test.php");
 require("./db/lib/icons_lib.php");
-echo "";
+
+$cat = isset($_GET["cat"]) ? trim($_GET["cat"]) : false;
 
 function color()
 {
@@ -23,6 +24,8 @@ function generate_pins()
 
     //debugWrite($a);
 
+    global $cat;
+
     $str = "";
 
     //$cats = explode(",",get_pinned_cats());
@@ -35,7 +38,7 @@ function generate_pins()
             debugWrite($t);
             print_r()
         }*/
-        $str = $str . "<li ><a href='index.php?cat=" . $a[$i]["id"] . "'><i class='material-icons'>" . /*$a[$i]["icon"]*/ get_random_icon() . "</i>#" . $a[$i]["value"] . " category</a></li>";
+        $str = $str . "<li " . ($cat == $a[$i]["id"] ? "class='active'" : "") . "><a href='index.php?cat=" . $a[$i]["id"] . "'><i class='material-icons'>" . /*$a[$i]["icon"]*/ get_random_icon() . "</i>#" . $a[$i]["value"] . " category</a></li>";
     }
     return $str;
 }
@@ -73,7 +76,7 @@ function generate_pins()
     <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper <?php color() ?> darken-4">
-          <a href="#!" class="brand-logo">(α)</a>
+          <a href="#!" class="brand-logo center">(α)</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
           <?php 
@@ -100,7 +103,7 @@ function generate_pins()
             </div>
         </nav>-->
         
-        <li><a href="index.php?cat=-1"><i class="material-icons">all_inclusive</i>All Posts</a></li>
+        <li <?php echo ($cat == "-1" ? "class='active'" : "") ?>><a href="index.php?cat=-1"><i class="material-icons">all_inclusive</i>All Posts</a></li>
         
         <li class="divider"></li>
         <!-- class='waves-effect waves-light' -->
