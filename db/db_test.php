@@ -206,6 +206,19 @@ function get_fake_post()
 
 function get_comments_for_post($id)
 {
+
+    //SELECT `post_id`, `comment_id`, `ts`, `body`, `from_user` FROM `comments`
+    if ($id == -2)
+    {
+        return array(
+            array("post_id" => -2,
+                "comment_id" => -1,
+                "ts" => time(),
+                "body" => "Also try the comments. Press on the Plus and tap on comments, to add a comment!",
+                "from_user" => "thallosaurus"
+            )
+        );
+    }
     $comments = dbExec("get_comments_for_id", array("id" => $id))->fetchAll(PDO::FETCH_ASSOC);
     return $comments;
 }
