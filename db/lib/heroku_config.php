@@ -1,4 +1,7 @@
 <?php
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
+
     $GLOBALS["lm"]["DB"]["DB_HOST"] = getenv("DB_HOST");
     $GLOBALS["lm"]["DB"]["DB_USERNAME"] = getenv("DB_USER");
     $GLOBALS["lm"]["DB"]["DB_PASSWORD"] = getenv("DB_PW");
