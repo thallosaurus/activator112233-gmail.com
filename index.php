@@ -82,8 +82,8 @@ function generate_pins()
           <?php 
         if (is_dev())
         {
-            echo '<li><a href="/db/call.php?nuke=1">Nuke database</a></li>';
-            echo '<li><a href="/newview.php">Test New View</a></li>';
+            echo '<li><a href="db/call.php?nuke=1">Nuke database</a></li>';
+            echo '<li><a href="newview.php">Test New View</a></li>';
         }
         ?>
           </ul>
