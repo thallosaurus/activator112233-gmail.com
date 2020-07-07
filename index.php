@@ -1,5 +1,4 @@
 <?php
-require("./vendor/autoload.php");
 require("./db/lib/config.php");
 require("./db/db_test.php");
 require("./db/lib/icons_lib.php");
