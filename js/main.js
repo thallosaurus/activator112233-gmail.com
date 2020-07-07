@@ -206,7 +206,7 @@ function buildTable(data)
 function onMainClickUI(e)
 {
     console.log(e);
-    location.href = location.origin + "/" + e.target.parentElement.dataset.href;
+    location.href = location.origin + "/lm/" + e.target.parentElement.dataset.href;
     /*let dataset = e.target.parentElement.dataset;
     console.log(dataset);
     sendRequest("call.php",
